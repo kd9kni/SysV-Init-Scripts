@@ -14,11 +14,15 @@
 # Description:       Encrypted/authenticated DNS proxy
 ### END INIT INFO
 
-#cmd="/usr/sbin/dnscrypt-proxy "-config" "/etc/dnscrypt-proxy/dnscrypt-proxy.toml""
 cmd="/usr/sbin/dnscrypt-proxy -config /etc/dnscrypt-proxy/dnscrypt-proxy.toml"
+
+### Yes, I know the above is really nasty, but good/fast/correct, pick any two!
 
 name=$(basename "$(readlink -f "$0")")
 pid_file="/var/run/$name.pid"
+
+### Looking for a logfile that isn't in the default install
+
 stdout_log="/var/log/dnscrypt-proxy/$name.log"
 stderr_log="/var/log/dnscrypt-proxy/$name.err"
 
